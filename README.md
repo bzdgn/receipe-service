@@ -156,7 +156,7 @@ not_contains
 Any filterKey is one of the fields of the Receipe model, which are;
 
 | field         | data type |
-| --------------------------|
+| --------------|-----------|
 | name          | String    |
 | serving       | Integer   |
 | ingredients   | String    |
