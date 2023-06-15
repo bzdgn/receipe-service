@@ -45,6 +45,19 @@ To test the API, you can import the [Postman collection](https://raw.githubuserc
 
 ![swagger_screenshot](https://raw.githubusercontent.com/bzdgn/receipe-service/main/misc/02_postman.PNG)
 
+If you want to play with database after running docker, you can connect to the database via [PGAdmin](https://www.pgadmin.org/) with the credentials used in the [docker compose file](https://github.com/bzdgn/receipe-service/blob/main/scripts/docker-compose.yml);
+
+| variable  |    value    |
+| ----------|-------------|
+| host      | localhost   |
+| port      | 5432        |
+| username  | postgres    |
+| password  | receipepass |
+
+Then you can see the database entries in the **Receipe** table;
+
+![swagger_screenshot](https://raw.githubusercontent.com/bzdgn/receipe-service/main/misc/03_postges.PNG)
+
 
 [TOC](#toc)
 
@@ -66,8 +79,6 @@ Basic CRUD operations for the API is very straight-forward. It has 4 fields as f
 In the retrieval operations, the id is also provided as a field.
 
 Important to remember that delete is by **name** as a path parameter for the simplicity, and modifiying the existing receipe is done via the **id** as a path parameter again.
-
-
 
 
 [TOC](#toc)
