@@ -1,0 +1,28 @@
+version: '3'
+services:
+  postgres-service:
+    image: postgres:latest
+    container_name: postgres_service_container
+    networks:
+      - backend
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: receipes
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: receipepass
+
+#  mockserver:
+#    image: mockserver/mockserver
+#    container_name: mockserver_container
+#    networks:
+#      - backend
+#    restart: always
+#    ports:
+#      - "80:1080"
+  
+networks:
+  backend:
+    driver: bridge
+    external: true

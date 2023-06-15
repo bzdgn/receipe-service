@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "7fb4a340-bb17-43ad-b9a3-393d3fab627e",
+		"name": "Receipe-Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1510878"
+	},
+	"item": [
+		{
+			"name": "GetReceipes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/receipe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"receipe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetReceipe",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getReceipe/hamburger",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getReceipe",
+						"hamburger"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddReceipe",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ingredients\": \"potatoe, tomatoe\",\r\n  \"instructions\": \"ne yaparsan yap\",\r\n  \"name\": \"sil\",\r\n  \"serving\": 25\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/receipe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"receipe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateReceipe",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ingredients\": \"potatoe, tomatoe\",\r\n  \"instructions\": \"just mix\",\r\n  \"name\": \"temporary receipe\",\r\n  \"serving\": 25\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/receipe/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"receipe",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SearchReceipe",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"searchCriteriaList\":[\r\n        {\r\n            \"filterKey\":\"serving\",\r\n            \"operation\":\"<=\",\r\n            \"value\":2\r\n        },\r\n        {\r\n            \"filterKey\":\"isVegan\",\r\n            \"operation\":\"==\",\r\n            \"value\":false\r\n        },\r\n        {\r\n            \"filterKey\":\"ingredients\",\r\n            \"operation\":\"contains\",\r\n            \"value\":\"meat\"\r\n        },\r\n        {\r\n            \"filterKey\":\"instructions\",\r\n            \"operation\":\"contains\",\r\n            \"value\":\"on the plat\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/receipe/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"receipe",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteReceipe",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/receipe/sil",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"receipe",
+						"sil"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
