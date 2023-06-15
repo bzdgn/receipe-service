@@ -129,6 +129,63 @@ If you do this search in the ```search``` endpoint, you will receive the chain f
 ]
 ```
 
+The search operations are defined in the [SearchOperation](https://github.com/bzdgn/receipe-service/blob/main/src/main/java/io/github/bzdgn/receipe/search/SearchOperation.java) class. The search operations you can apply to filterKeys are as follows;
+
+```
+contains
+not_contains
+==
+!=
+> 
+>=
+< 
+<=
+```
+
+Any filterKey is one of the fields of the Receipe model, which are;
+
+| field         | data type |
+| --------------------------|
+| name          | String    |
+| serving       | Integer   |
+| ingredients   | String    |
+| instructions  | String    |
+| isVegan       | boolean   |
+
+So you provide a list of search criteria as a list of the following objects;
+
+```json
+{
+    "filterKey":"<name_of_the_field_here>",
+    "operation":"<operation_literal>",
+    "value":<value_here>
+}
+```
+
+It is important to mention that these criterias are a chain of AND operation, which is defined in the [ReceipeSpecificationBuilder class](https://github.com/bzdgn/receipe-service/blob/1efa63d9a198ccaa11c37525da5dc581a27437b7/src/main/java/io/github/bzdgn/receipe/search/ReceipeSpecificationBuilder.java#L36) line number 35. Here is the snippet of the build method;
+
+```java
+    public Specification<Receipe> build(){
+        if(params.size() == 0){
+            return null;
+        }
+
+        Specification<Receipe> result = new ReceipeSpecification(params.get(0));
+        for (int idx = 1; idx < params.size(); idx++){
+            SearchCriteria criteria = params.get(idx);
+            result = Specification.where(result).and(new ReceipeSpecification(criteria));
+        }
+
+        return result;
+    }
+```
+
+In the following line, **and** is used;
+
+```java
+result = Specification.where(result).and(new ReceipeSpecification(criteria));
+```
+
 
 [TOC](#toc)
 
